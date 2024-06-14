@@ -1,5 +1,5 @@
 import "./sidebar.scss";
-import { Link,useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";//LOGOUT
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonIcon from '@mui/icons-material/Person';
 import InventoryIcon from '@mui/icons-material/Inventory';
@@ -9,17 +9,17 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import CategoryIcon from '@mui/icons-material/Category';
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
-import { signOut } from "firebase/auth";
-import { auth } from "../../firebase";
-import { AuthContext } from "../../context/AuthContext";
+import { signOut } from "firebase/auth";//LOGOUT
+import { auth } from "../../firebase";//LOGOUT
+import { AuthContext } from "../../context/AuthContext";//LOGOUT
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
 
 
 
-  const { dispatch: authDispatch } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { dispatch: authDispatch } = useContext(AuthContext);//LOGOUT
+  const navigate = useNavigate();//LOGOUT SAMPEK LOGOUT BAWAH
 
   const handleLogout = () => {
     signOut(auth)
@@ -30,7 +30,7 @@ const Sidebar = () => {
       .catch((error) => {
         console.error("Logout error: ", error);
       });
-  };
+  };//LOGOUT
 
 
   return (
@@ -89,5 +89,5 @@ const Sidebar = () => {
 </div>
   );
 };
-
+//LOGOUT <li onClick={handleLogout}>
 export default Sidebar
