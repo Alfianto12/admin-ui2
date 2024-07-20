@@ -16,22 +16,19 @@ import { AuthContext } from "../../context/AuthContext";//LOGOUT
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
 
-
-
-  const { dispatch: authDispatch } = useContext(AuthContext);//LOGOUT
-  const navigate = useNavigate();//LOGOUT SAMPEK LOGOUT BAWAH
+  const { dispatch: authDispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        authDispatch({ type: "LOGOUT" });
-        navigate("/login"); //Redirect to login page after logout
+        authDispatch ({ type: "LOGOUT"});
+        navigate("/login");
       })
       .catch((error) => {
-        console.error("Logout error: ", error);
-      });
-  };//LOGOUT
-
+        console.error("Logout error: ");
+      })
+  }
 
   return (
     <div className="sidebar">
@@ -50,7 +47,7 @@ const Sidebar = () => {
       </li>
       <p className="title">LIST</p>
       <Link to="/users">
-        <li>
+        <li data-testid="users">
             <PersonIcon className="icon" />
             <span>Users</span>
         </li>
@@ -66,7 +63,7 @@ const Sidebar = () => {
             <span>Orders</span>      
       </li>
       <Link to="/categories">
-      <li>
+      <li data-testid="category">
             <CategoryIcon className="icon" />
             <span>Categories</span>
         </li>
@@ -87,7 +84,7 @@ const Sidebar = () => {
     <div className="colorOption" onClick={() => dispatch({type : "DARK"})}></div>
   </div>
 </div>
-  );
-};
-//LOGOUT <li onClick={handleLogout}>
+  )
+}
+
 export default Sidebar
